@@ -1,0 +1,19 @@
+.card{
+    background-color: red;
+    color: #fff;
+}
+
+ul>li{
+    /* list-style: none; */
+    margin-bottom: 20px;
+    /* cursor: pointer; */
+}
+
+ul>li{
+    /* list-style: none; */
+}
+
+
+button{
+    cursor: pointer;
+}

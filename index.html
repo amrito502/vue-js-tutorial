@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue js || Motaleb Hossain</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <input type="text" placeholder="New Item" v-model="item" />
+      <button @click="AddNewItem">Add New Item</button>
+      <button @click="asc">ASC</button>
+      <button @click="dsc">DSC</button>
+      <ul>
+        <li v-for="(skill, index) in skills">
+          {{ skill }} <button @click="removeItem(index)">Delete</button>
+        </li>
+      </ul>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+      let app = new Vue({
+        el: ".app",
+        data: {
+          item: null,
+          skills: ["html", "css", "js"],
+        },
+        methods: {
+          AddNewItem: function () {
+            if (this.item === null) {
+              alert("This Field is Empty!");
+            } else {
+              this.skills.push(this.item);
+              this.item = null;
+            }
+          },
+          removeItem: function (index) {
+            this.skills.splice(index, 1);
+          },
+          asc: function () {
+            this.skills.sort();
+          },
+          dsc: function () {
+            this.skills.reverse();
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
