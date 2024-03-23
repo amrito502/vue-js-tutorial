@@ -12,6 +12,7 @@
       <button @click="AddNewItem">Add New Item</button>
       <button @click="asc">ASC</button>
       <button @click="dsc">DSC</button>
+      <span style="color: red;" class="alert" @click="MyAlert=false" v-if="MyAlert">This Field is Empty!</span>
       <ul>
         <li v-for="(skill, index) in skills">
           {{ skill }} <button @click="removeItem(index)">Delete</button>
@@ -36,11 +37,12 @@
           item: null,
           posts: {},
           skills: ["html", "css", "js"],
+          MyAlert: false,
         },
         methods: {
           AddNewItem: function () {
             if (this.item === null) {
-              alert("This Field is Empty!");
+              this.MyAlert = true;
             } else {
               this.skills.push(this.item);
               this.item = null;
