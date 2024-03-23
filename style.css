@@ -17,3 +17,10 @@ ul>li{
 button{
     cursor: pointer;
 }
+
+.posts{
+    border: 2px solid red;
+    margin-bottom: 20px;
+    padding: 5px 20px;
+    width: 35%;
+}

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vue js || Motaleb Hossain</title>
+    <title>Vue js || Motaleb Hossain class</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -17,15 +17,24 @@
           {{ skill }} <button @click="removeItem(index)">Delete</button>
         </li>
       </ul>
+      <hr />
+      <h1>All Posts : Call In API</h1>
+      <hr />
+      <div v-for="post in posts" class="posts">
+        <h2>{{ post.title }}</h4>
+        <p>{{ post.body }}</p>
+      </div>
     </div>
 
     <script src="js/vue.js"></script>
+    <script src="js/axios.min.js"></script>
     <script src="js/app.js"></script>
     <script>
       let app = new Vue({
         el: ".app",
         data: {
           item: null,
+          posts: {},
           skills: ["html", "css", "js"],
         },
         methods: {
@@ -46,6 +55,17 @@
           dsc: function () {
             this.skills.reverse();
           },
+          getPost: function () {
+            let main = this;
+            axios
+              .get("https://jsonplaceholder.typicode.com/posts")
+              .then(function (response) {
+                main.posts = response.data;
+              });
+          },
+        },
+        mounted: function () {
+          this.getPost();
         },
       });
     </script>
